@@ -97,8 +97,14 @@ input,select{
     <option>So Cute</option>
   </select>
 
+  <!-- ✅ วันจอง -->
+  <input id="date" type="date">
+
+  <!-- ✅ เวลา -->
+  <input id="time" type="time">
+
   <div class="text-sm opacity-70 mt-2">
-    📅 เลือกวัน / เวลา (ร้านจะยืนยันคิวผ่าน LINE)
+    📅 ร้านจะยืนยันคิวผ่าน LINE อีกครั้ง
   </div>
 
   <a onclick="submitBooking()"
@@ -113,9 +119,11 @@ function submitBooking(){
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
   const service = document.getElementById("service").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
 
-  if(!name || !phone){
-    alert("กรุณากรอกชื่อและเบอร์โทร");
+  if(!name || !phone || !date || !time){
+    alert("กรุณากรอกข้อมูลให้ครบ");
     return;
   }
 
@@ -124,6 +132,8 @@ function submitBooking(){
 ชื่อ: ${name}
 เบอร์: ${phone}
 บริการ: ${service}
+วัน: ${date}
+เวลา: ${time}
 `;
 
   const lineURL =
