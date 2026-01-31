@@ -9,23 +9,39 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-    body { background:#faf6f3; font-family: serif; }
-    .card { background:white; border-radius:20px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.05);}
+    body {
+      font-family: 'Georgia', serif;
+      background: #faf6f2;
+      color: #5a4a42;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    button {
+      background: #e5d6cc;
+      border-radius: 999px;
+      padding: 12px;
+      width: 100%;
+    }
   </style>
 </head>
-<body class="text-gray-700">
+
+<body>
 
 <!-- HERO -->
 <section class="text-center py-20">
-  <h1 class="text-4xl tracking-widest mb-2">ELLYLASH</h1>
-  <p class="text-sm text-gray-500 mb-6">Premium Eyelash Extensions</p>
-  <a href="#booking" class="px-6 py-3 rounded-full bg-[#e6d8cf]">BOOK NOW</a>
+  <h1 class="text-4xl tracking-widest">ELLYLASH</h1>
+  <p class="mt-2 text-sm text-gray-500">Premium Eyelash Extensions</p>
+  <a href="#booking" class="inline-block mt-6 px-8 py-3 rounded-full bg-[#e5d6cc]">BOOK NOW</a>
 </section>
 
 <!-- SERVICES -->
-<section class="max-w-5xl mx-auto px-4 py-16">
+<section class="max-w-4xl mx-auto px-4">
   <h2 class="text-center text-2xl mb-10">Our Services</h2>
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+  <div class="grid grid-cols-2 gap-6">
     <div class="card text-center">Wet Look<br>599฿</div>
     <div class="card text-center">Doll Look<br>599฿</div>
     <div class="card text-center">So Cute<br>599฿</div>
@@ -36,28 +52,28 @@
 </section>
 
 <!-- GALLERY -->
-<section class="max-w-5xl mx-auto px-4 py-16">
+<section class="max-w-4xl mx-auto px-4 mt-20">
   <h2 class="text-center text-2xl mb-10">Our Work</h2>
   <div class="grid grid-cols-2 gap-4">
-    <img src="https://i.imgur.com/J5q6W8S.jpg" class="rounded-xl">
-    <img src="https://i.imgur.com/4lGk3zN.jpg" class="rounded-xl">
-    <img src="https://i.imgur.com/Rx1uZ4O.jpg" class="rounded-xl">
-    <img src="https://i.imgur.com/kN0mYtG.jpg" class="rounded-xl">
+    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90" class="rounded-xl" />
+    <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30" class="rounded-xl" />
+    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9" class="rounded-xl" />
+    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f" class="rounded-xl" />
   </div>
 </section>
 
 <!-- BOOKING -->
-<section id="booking" class="max-w-md mx-auto px-4 py-16">
+<section id="booking" class="max-w-md mx-auto px-4 mt-24">
   <div class="card">
-    <h2 class="text-center text-xl mb-6">Book Your Appointment</h2>
+    <h3 class="text-center text-xl mb-6">Book Your Appointment</h3>
 
     <form id="booking-form" class="space-y-4">
-      <input id="name" required placeholder="ชื่อ" class="w-full p-3 rounded border">
-      <input id="phone" required placeholder="เบอร์โทร" class="w-full p-3 rounded border">
+      <input id="name" required placeholder="ชื่อ" class="w-full border p-3 rounded-xl" />
+      <input id="phone" required placeholder="เบอร์โทร" class="w-full border p-3 rounded-xl" />
 
-      <input id="date" type="date" required class="w-full p-3 rounded border">
+      <input id="date" type="date" required class="w-full border p-3 rounded-xl" />
 
-      <select id="time" required class="w-full p-3 rounded border">
+      <select id="time" required class="w-full border p-3 rounded-xl">
         <option value="">เลือกเวลา</option>
         <option>13:00</option>
         <option>15:00</option>
@@ -67,41 +83,59 @@
         <option>21:00</option>
       </select>
 
-      <button class="w-full p-3 rounded bg-[#e6d8cf]">
-        CONFIRM BOOKING
-      </button>
+      <button type="submit">CONFIRM BOOKING</button>
     </form>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="text-center py-16 space-y-4">
-  <a href="https://lin.ee/sCZUvJG" class="block">LINE Official</a>
-  <a href="https://instagram.com/ellylash.h" class="block">Instagram</a>
-  <a href="tel:0613461653" class="block">061-346-1653</a>
+<section class="text-center py-20">
+  <h3 class="text-xl mb-6">Get In Touch</h3>
+  <p>LINE Official</p>
+  <p>Instagram</p>
+  <p>061-346-1653</p>
 </section>
 
 <script>
   const supabaseUrl = "https://smrlqglbawthenzbn.supabase.co";
-  const supabaseKey = "sb_publishable_lETjZpkPrrwpXFwFb9mH4g_vPCJK6Kv";
+  const supabaseKey = "sb_publishable_lETjZpkIrxpXFwFb9mH4g_vPCJK6Kv";
   const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-  document.getElementById("booking-form").addEventListener("submit", async (e) => {
+  const form = document.getElementById("booking-form");
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const name = name.value;
+    const phone = phone.value;
+    const date = date.value;
+    const time = time.value;
+
+    // กันเวลาซ้ำ
+    const { data } = await supabase
+      .from("bookings")
+      .select("*")
+      .eq("booking_date", date)
+      .eq("start_time", time);
+
+    if (data.length > 0) {
+      alert("เวลานี้ถูกจองแล้ว");
+      return;
+    }
+
     const { error } = await supabase.from("bookings").insert([{
-      customer_name: name.value,
-      phone: phone.value,
-      booking_date: date.value,
-      start_time: time.value
+      customer_name: name,
+      phone: phone,
+      booking_date: date,
+      start_time: time
     }]);
 
     if (error) {
-      alert("❌ จองไม่สำเร็จ");
+      alert("เกิดข้อผิดพลาด");
       console.log(error);
     } else {
-      alert("✅ จองสำเร็จแล้ว");
-      e.target.reset();
+      alert("จองสำเร็จแล้ว");
+      form.reset();
     }
   });
 </script>
