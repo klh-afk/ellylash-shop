@@ -1,79 +1,84 @@
-<!DOCTYPE html>
-<html lang="th">
+<!doctype html>
+<html lang="en" class="h-full">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ELLYLASH – Premium Eyelash Extensions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELLYLASH - Premium Eyelash Extensions</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-    body {
-      font-family: 'Georgia', serif;
-      background: #faf6f2;
-      color: #5a4a42;
+    body{box-sizing:border-box}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{width:100%;height:100%;overflow-x:hidden}
+    body{
+      font-family:'Outfit',sans-serif;
+      font-weight:300;
+      color:#8B7E74;
+      line-height:1.7;
+      background:#FDFCFB;
     }
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-    button {
-      background: #e5d6cc;
-      border-radius: 999px;
-      padding: 12px;
-      width: 100%;
-    }
+    .main-wrapper{width:100%;height:100%;overflow-y:auto;scroll-behavior:smooth}
+    .hero-section{padding:80px 28px 100px;text-align:center;background:linear-gradient(165deg,#FAF6F3,#F9F1ED,#F5EBE5)}
+    .brand-name{font-family:'Cormorant Garamond',serif;font-size:56px;letter-spacing:8px;margin-bottom:16px}
+    .brand-subtitle{font-size:13px;letter-spacing:3px;opacity:.7;margin-bottom:56px}
+    .cta-button{display:inline-block;padding:18px 56px;border-radius:50px;background:#E8D5CF;text-decoration:none;color:#8B7E74}
+    .section{padding:72px 28px}
+    .section-title{text-align:center;font-family:'Cormorant Garamond',serif;font-size:38px;margin-bottom:48px}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:600px;margin:auto}
+    .service-card{background:white;border-radius:24px;padding:28px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+    .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:480px;margin:auto}
+    .gallery-item{aspect-ratio:1;border-radius:24px;overflow:hidden;background:#eee}
+    .gallery-item img{width:100%;height:100%;object-fit:cover}
+    .booking-container{max-width:440px;margin:auto;background:white;border-radius:32px;padding:40px;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+    input,select{width:100%;padding:14px;margin-bottom:14px;border-radius:14px;border:1px solid #ddd}
+    button{width:100%;padding:16px;border-radius:20px;border:none;background:#E8D5CF;font-size:14px;cursor:pointer}
   </style>
 </head>
 
 <body>
+<div class="main-wrapper">
 
-<!-- HERO -->
-<section class="text-center py-20">
-  <h1 class="text-4xl tracking-widest">ELLYLASH</h1>
-  <p class="mt-2 text-sm text-gray-500">Premium Eyelash Extensions</p>
-  <a href="#booking" class="inline-block mt-6 px-8 py-3 rounded-full bg-[#e5d6cc]">BOOK NOW</a>
+<section class="hero-section">
+  <h1 class="brand-name">ELLYLASH</h1>
+  <p class="brand-subtitle">Premium Eyelash Extensions</p>
+  <a href="#booking" class="cta-button">BOOK NOW</a>
 </section>
 
-<!-- SERVICES -->
-<section class="max-w-4xl mx-auto px-4">
-  <h2 class="text-center text-2xl mb-10">Our Services</h2>
-  <div class="grid grid-cols-2 gap-6">
-    <div class="card text-center">Wet Look<br>599฿</div>
-    <div class="card text-center">Doll Look<br>599฿</div>
-    <div class="card text-center">So Cute<br>599฿</div>
-    <div class="card text-center">Anime<br>699฿</div>
-    <div class="card text-center">Lifting<br>499฿</div>
-    <div class="card text-center">BB Glow<br>1399฿</div>
+<section class="section">
+  <h2 class="section-title">Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card">Wet Look<br>599฿</div>
+    <div class="service-card">Doll Look<br>599฿</div>
+    <div class="service-card">So Cute<br>599฿</div>
+    <div class="service-card">Anime<br>699฿</div>
+    <div class="service-card">Lifting<br>499฿</div>
+    <div class="service-card">BB Glow<br>1399฿</div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="max-w-4xl mx-auto px-4 mt-20">
-  <h2 class="text-center text-2xl mb-10">Our Work</h2>
-  <div class="grid grid-cols-2 gap-4">
-    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90" class="rounded-xl" />
-    <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30" class="rounded-xl" />
-    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9" class="rounded-xl" />
-    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f" class="rounded-xl" />
+<section class="section">
+  <h2 class="section-title">Our Work</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="https://i.postimg.cc/KvjKnpsw/file_00000000b3fc71fa941f0ef67cea1951.png"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/KvjKnpsw/file_00000000b3fc71fa941f0ef67cea1951.png"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/KvjKnpsw/file_00000000b3fc71fa941f0ef67cea1951.png"></div>
+    <div class="gallery-item"><img src="https://i.postimg.cc/KvjKnpsw/file_00000000b3fc71fa941f0ef67cea1951.png"></div>
   </div>
 </section>
 
-<!-- BOOKING -->
-<section id="booking" class="max-w-md mx-auto px-4 mt-24">
-  <div class="card">
-    <h3 class="text-center text-xl mb-6">Book Your Appointment</h3>
-
-    <form id="booking-form" class="space-y-4">
-      <input id="name" required placeholder="ชื่อ" class="w-full border p-3 rounded-xl" />
-      <input id="phone" required placeholder="เบอร์โทร" class="w-full border p-3 rounded-xl" />
-
-      <input id="date" type="date" required class="w-full border p-3 rounded-xl" />
-
-      <select id="time" required class="w-full border p-3 rounded-xl">
+<section id="booking" class="section">
+  <h2 class="section-title">Book Appointment</h2>
+  <div class="booking-container">
+    <form id="booking-form">
+      <input id="name" required placeholder="ชื่อ">
+      <input id="phone" required placeholder="เบอร์โทร">
+      <input id="date" type="date" required>
+      <select id="time" required>
         <option value="">เลือกเวลา</option>
         <option>13:00</option>
         <option>15:00</option>
@@ -82,62 +87,40 @@
         <option>19:00</option>
         <option>21:00</option>
       </select>
-
-      <button type="submit">CONFIRM BOOKING</button>
+      <button>CONFIRM BOOKING</button>
     </form>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="text-center py-20">
-  <h3 class="text-xl mb-6">Get In Touch</h3>
-  <p>LINE Official</p>
-  <p>Instagram</p>
-  <p>061-346-1653</p>
-</section>
+</div>
 
 <script>
-  const supabaseUrl = "https://smrlqglbawthenzbn.supabase.co";
-  const supabaseKey = "sb_publishable_lETjZpkIrxpXFwFb9mH4g_vPCJK6Kv";
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = supabase.createClient(
+  "https://smrlqglbawthenzbn.supabase.co",
+  "sb_publishable_XXXXXXXXXXXX"
+);
 
-  const form = document.getElementById("booking-form");
+document.getElementById("booking-form").addEventListener("submit", async (e)=>{
+  e.preventDefault();
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  const date = date.value;
+  const time = time.value;
 
-    const name = name.value;
-    const phone = phone.value;
-    const date = date.value;
-    const time = time.value;
+  const { data } = await supabase.from("bookings")
+    .select("*").eq("booking_date",date).eq("start_time",time);
 
-    // กันเวลาซ้ำ
-    const { data } = await supabase
-      .from("bookings")
-      .select("*")
-      .eq("booking_date", date)
-      .eq("start_time", time);
+  if(data.length>0){alert("เวลานี้ถูกจองแล้ว");return;}
 
-    if (data.length > 0) {
-      alert("เวลานี้ถูกจองแล้ว");
-      return;
-    }
+  await supabase.from("bookings").insert([{
+    customer_name:name.value,
+    phone:phone.value,
+    booking_date:date,
+    start_time:time
+  }]);
 
-    const { error } = await supabase.from("bookings").insert([{
-      customer_name: name,
-      phone: phone,
-      booking_date: date,
-      start_time: time
-    }]);
-
-    if (error) {
-      alert("เกิดข้อผิดพลาด");
-      console.log(error);
-    } else {
-      alert("จองสำเร็จแล้ว");
-      form.reset();
-    }
-  });
+  alert("จองสำเร็จแล้ว");
+  e.target.reset();
+});
 </script>
 
 </body>
