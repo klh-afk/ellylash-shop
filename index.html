@@ -3,29 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ellylash Booking</title>
+  <title>ELLYLASH – Premium Eyelash Extensions</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    body {
+      background:#fff7f2;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    }
+    .card {
+      background:white;
+      border-radius:20px;
+      padding:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.05);
+    }
+    .btn {
+      background:#e6d5cc;
+      border-radius:14px;
+      padding:14px;
+      width:100%;
+      font-size:16px;
+    }
+  </style>
 </head>
 
-<body class="bg-[#faf6f2] min-h-screen flex flex-col items-center">
+<body>
 
-  <div class="w-full max-w-md mt-12 p-6 bg-white rounded-2xl shadow-md">
-    <h1 class="text-center text-2xl font-light mb-6">Book Your Appointment</h1>
+<!-- HERO -->
+<section class="py-24 text-center">
+  <h1 class="text-4xl tracking-widest">ELLYLASH</h1>
+  <p class="mt-2 text-gray-500">Premium Eyelash Extensions</p>
+  <a href="#booking" class="inline-block mt-6 btn max-w-xs">BOOK NOW</a>
+</section>
 
-    <form id="booking-form" class="space-y-4">
+<!-- SERVICES -->
+<section class="py-16">
+  <h2 class="text-center text-2xl mb-10">Our Services</h2>
+  <div class="grid grid-cols-2 gap-4 max-w-md mx-auto px-4">
+    <div class="card text-center">Wet Look<br>599฿</div>
+    <div class="card text-center">Doll Look<br>599฿</div>
+    <div class="card text-center">So Cute<br>599฿</div>
+    <div class="card text-center">Anime<br>699฿</div>
+    <div class="card text-center">Lifting<br>499฿</div>
+    <div class="card text-center">BB Glow<br>1399฿</div>
+  </div>
+</section>
 
-      <input id="name" required placeholder="ชื่อ"
-        class="w-full border rounded-lg p-3"/>
+<!-- BOOKING -->
+<section id="booking" class="py-20">
+  <div class="card max-w-md mx-auto">
+    <h2 class="text-center text-xl mb-4">Book Your Appointment</h2>
 
-      <input id="phone" required placeholder="เบอร์โทร"
-        class="w-full border rounded-lg p-3"/>
+    <form id="booking-form" class="space-y-3">
+      <input id="name" required placeholder="ชื่อ" class="w-full p-3 border rounded-xl">
+      <input id="phone" required placeholder="เบอร์โทร" class="w-full p-3 border rounded-xl">
+      <input id="date" type="date" required class="w-full p-3 border rounded-xl">
 
-      <input id="date" type="date" required
-        class="w-full border rounded-lg p-3"/>
-
-      <select id="time" required class="w-full border rounded-lg p-3">
+      <select id="time" required class="w-full p-3 border rounded-xl">
         <option value="">เลือกเวลา</option>
         <option>13:00</option>
         <option>15:00</option>
@@ -35,42 +71,47 @@
         <option>21:00</option>
       </select>
 
-      <button type="submit"
-        class="w-full bg-[#e5d6cc] py-3 rounded-lg text-gray-700 font-medium">
-        CONFIRM BOOKING
-      </button>
+      <button class="btn">CONFIRM BOOKING</button>
     </form>
   </div>
+</section>
 
-  <script>
-    const supabase = supabase.createClient(
-      "https://smrlqlgbawthenzbn.supabase.co",
-      "sb_publishable_lETJZpKlrwpXFwFb9mH4g_vPCJK6Kv"
-    );
+<!-- CONTACT -->
+<section class="py-16 text-center text-gray-600">
+  <p>LINE</p>
+  <p>Instagram</p>
+  <p>061-346-1653</p>
+</section>
 
-    const form = document.getElementById("booking-form");
+<script>
+const supabaseUrl = "https://smrlqlgbawthenzbn.supabase.co";
+const supabaseKey = "sb_publishable_lETjZpKIrwpXFwFb9mH4g_vPCJK6Kv";
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+document.getElementById("booking-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-      const data = {
-        customer_name: name.value,
-        phone: phone.value,
-        booking_date: date.value,
-        start_time: time.value
-      };
+  const name = name.value;
+  const phone = phone.value;
+  const date = date.value;
+  const time = time.value;
 
-      const { error } = await supabase.from("bookings").insert([data]);
+  const { error } = await supabase.from("bookings").insert([{
+    customer_name: name,
+    phone,
+    booking_date: date,
+    start_time: time
+  }]);
 
-      if (error) {
-        alert("❌ จองไม่สำเร็จ");
-        console.log(error);
-      } else {
-        alert("✅ จองสำเร็จแล้ว!");
-        form.reset();
-      }
-    });
-  </script>
+  if (error) {
+    alert("❌ จองไม่สำเร็จ");
+    console.log(error);
+  } else {
+    alert("✅ จองสำเร็จแล้ว");
+    e.target.reset();
+  }
+});
+</script>
 
 </body>
 </html>
