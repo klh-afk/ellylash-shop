@@ -5,7 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ELLYLASH – Premium Eyelash Extensions</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzj7Jo45BrfbqV67W3cKE9k4jpqg0q--6PcqpOnjSk/exec";
+
+document.getElementById("submit").onclick = async ()=>{
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const service = document.getElementById("service").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+
+  if(!name || !phone || !date || !time){
+    alert("กรุณากรอกข้อมูลให้ครบ");
+    return;
+  }
+
+  const payload = {
+    name, phone, service,
+    start: date + " " + time,
+    end: date + " " + time
+  };
+
+  try {
+    await fetch(SCRIPT_URL,{
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify(payload)
+    });
+    alert("จองคิวสำเร็จแล้ว 💗");
+    location.reload();
+  } catch(err){
+    alert("เชื่อมระบบไม่สำเร็จ ลองใหม่อีกครั้ง");
+    console.error(err);
+  }
+
+};
+
+});
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
