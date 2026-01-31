@@ -3,57 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ELLYLASH Booking</title>
+  <title>ELLYLASH – Booking</title>
 
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
     body {
-      background: #faf7f5;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      background: #faf6f3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
   </style>
 </head>
-
-<body class="h-full">
+<body class="min-h-screen flex flex-col items-center justify-start">
 
   <!-- HERO -->
-  <section class="text-center py-16">
+  <section class="text-center mt-12">
     <h1 class="text-4xl font-light tracking-wide">ELLYLASH</h1>
-    <p class="text-sm text-gray-500 mt-2">Premium Eyelash Extensions</p>
-    <a href="#booking" class="inline-block mt-6 px-6 py-2 bg-[#e6d5cc] rounded-full">
+    <p class="text-gray-500 mt-2">Premium Eyelash Extensions</p>
+    <a href="#booking" class="inline-block mt-6 px-8 py-3 bg-[#e7dcd5] rounded-full text-sm">
       BOOK NOW
     </a>
   </section>
 
   <!-- BOOKING -->
-  <section id="booking" class="max-w-md mx-auto bg-white rounded-2xl p-6 shadow">
-    <h2 class="text-center mb-4 text-lg">Book Your Appointment</h2>
+  <section id="booking" class="mt-10 bg-white rounded-2xl p-6 w-[90%] max-w-md shadow">
+    <h2 class="text-center text-lg mb-4">Book Your Appointment</h2>
 
     <form id="booking-form" class="space-y-3">
-      <input id="name" required placeholder="ชื่อ" class="w-full p-2 border rounded" />
-      <input id="phone" required placeholder="เบอร์โทร" class="w-full p-2 border rounded" />
-      <input id="date" type="date" required class="w-full p-2 border rounded" />
-      <input id="time" type="time" required class="w-full p-2 border rounded" />
+      <input id="name" required placeholder="ชื่อ"
+        class="w-full border rounded-lg px-3 py-2" />
 
-      <button type="submit" class="w-full py-2 bg-[#e6d5cc] rounded">
+      <input id="phone" required placeholder="เบอร์โทร"
+        class="w-full border rounded-lg px-3 py-2" />
+
+      <input id="date" type="date" required
+        class="w-full border rounded-lg px-3 py-2" />
+
+      <select id="time" required
+        class="w-full border rounded-lg px-3 py-2">
+        <option value="">เลือกเวลา</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+      </select>
+
+      <button
+        type="submit"
+        class="w-full py-3 rounded-lg bg-[#e7dcd5] mt-4">
         CONFIRM BOOKING
       </button>
     </form>
   </section>
 
   <!-- CONTACT -->
-  <section class="text-center py-12">
-    <a href="https://line.me" class="block mb-3">LINE</a>
-    <a href="https://instagram.com" class="block mb-3">Instagram</a>
-    <a href="tel:0613461653" class="block">061-346-1653</a>
+  <section class="mt-10 text-center text-sm text-gray-600 space-y-2">
+    <div>LINE</div>
+    <div>Instagram</div>
+    <div>061-346-1653</div>
   </section>
 
-  <!-- SUPABASE SCRIPT (ต้องอยู่ล่างสุดเท่านั้น) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- SCRIPT -->
   <script>
-    const supabaseUrl = "https://smrlqlgbawthenzbn.supabase.co";
-    const supabaseKey = "sb_publishable_lETjzpKplrwpXFwbF9mH4g_vPCJK6Kv";
+    const supabaseUrl = "https://smrlqglbawthenzbn.supabase.co";
+    const supabaseKey = "sb_publishable_lETjZpKlrwpXFwFb9mH4g_vPCJK6Kv";
     const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
     const form = document.getElementById("booking-form");
@@ -78,12 +99,26 @@
       if (error) {
         alert("❌ จองไม่สำเร็จ");
         console.log(error);
-      } else {
-        alert("✅ จองสำเร็จแล้ว");
-        form.reset();
+        return;
       }
+
+      const message = `
+จองคิวต่อขนตา 💖
+ชื่อ: ${name}
+เบอร์: ${phone}
+วันที่: ${date}
+เวลา: ${time}
+      `;
+
+      const lineUrl =
+        "https://lin.ee/sCZUvJG?text=" +
+        encodeURIComponent(message);
+
+      alert("✅ บันทึกแล้ว กำลังไป LINE เพื่อยืนยันคิว");
+      window.open(lineUrl, "_blank");
+
+      form.reset();
     });
   </script>
-
 </body>
 </html>
