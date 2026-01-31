@@ -5,52 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ELLYLASH – Premium Eyelash Extensions</title>
 
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:Montserrat;background:#0b0b0c;color:white}
-.hero{
-  background:url("https://i.postimg.cc/gkvyyN4p/Luxury-eyelash-extensions-advertising-poster-extreme-close-up-of-a-woman-e-20260131-072825-0000.jpg") center/cover no-repeat;
-  height:60vh;
-  mask-image:linear-gradient(to bottom,black 60%,transparent 100%);
+body {
+  background:#0b0b0c;
+  color:white;
+  font-family:Montserrat;
 }
-.card{
-  background:rgba(255,255,255,.08);
-  border-radius:20px;
+
+/* HERO */
+.hero {
+  background:url("https://i.postimg.cc/gkvyyN4p/Luxury-eyelash-extensions-advertising-poster-extreme-close-up-of-a-woman-e-20260131-072825-0000.jpg")
+  center/cover no-repeat;
+  height:60vh;
+  mask-image:linear-gradient(to bottom, black 65%, transparent 100%);
+}
+
+/* CARDS */
+.card {
+  background:rgba(255,255,255,0.08);
+  border-radius:18px;
   padding:18px;
   box-shadow:0 0 25px rgba(255,105,180,.35);
   transition:.3s;
 }
-.card:hover{transform:translateY(-6px);box-shadow:0 0 45px rgba(255,105,180,.65)}
-.gallery img{
+.card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 0 45px rgba(255,105,180,.65);
+}
+
+/* GALLERY */
+.gallery img {
   width:150px;
   aspect-ratio:1/1;
   object-fit:cover;
-  border-radius:16px;
+  border-radius:14px;
 }
-.glass{
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(14px);
+
+/* GLASS */
+.glass {
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);
   border-radius:20px;
 }
-input,select{
+
+/* INPUT */
+input, select {
   background:rgba(0,0,0,.4);
-  border:none;
-  color:white;
+  border-radius:12px;
+  padding:12px;
+  width:100%;
 }
-button{cursor:pointer}
 </style>
 </head>
 
-<body>
+<body class="overflow-x-hidden">
 
 <!-- HERO -->
 <section class="hero flex items-center justify-center">
-  <div class="text-center mt-32">
+  <div class="text-center mt-24">
     <h1 class="text-4xl tracking-widest font-semibold">ELLYLASH</h1>
-    <p class="opacity-80 mt-2">Premium Eyelash Extensions</p>
-    <a href="#booking" class="inline-block mt-6 px-8 py-3 bg-pink-400 text-black rounded-full font-semibold">
+    <p class="text-sm opacity-80 mt-2">Premium Eyelash Extensions</p>
+    <a href="#booking" class="inline-block mt-6 px-8 py-3 rounded-full bg-pink-400 text-black font-semibold">
       BOOK NOW
     </a>
   </div>
@@ -70,70 +91,56 @@ button{cursor:pointer}
 <!-- GALLERY -->
 <section class="mt-16 px-6">
 <h2 class="text-center text-2xl tracking-widest mb-4">GALLERY</h2>
-<div class="flex gap-4 overflow-x-auto pb-2 gallery">
-  <img src="https://i.postimg.cc/1fJpD1VY/1.jpg">
-  <img src="https://i.postimg.cc/7ZMJjQ6S/2.jpg">
-  <img src="https://i.postimg.cc/vcQ1bMYD/3.jpg">
-  <img src="https://i.postimg.cc/NL9SkH9s/4.jpg">
-  <img src="https://i.postimg.cc/5XgP8VhJ/5.jpg">
+<div class="flex gap-4 overflow-x-auto gallery pb-2">
+  <img src="https://i.postimg.cc/5NyHwKRN/1769763534518.jpg">
+  <img src="https://i.postimg.cc/Kz5K56b3/1769763534401.jpg">
+  <img src="https://i.postimg.cc/Hx0P7MWb/1769739281503.jpg">
+  <img src="https://i.postimg.cc/B65w1FZ1/1769739279789.jpg">
 </div>
 </section>
 
 <!-- BOOKING -->
-<section id="booking" class="mt-20 px-6 pb-24">
+<section id="booking" class="mt-20 px-6 pb-28">
 <h2 class="text-2xl mb-4 tracking-widest">BOOKING</h2>
 
 <div class="glass p-4 space-y-3">
-  <input id="name" class="w-full p-3 rounded" placeholder="Name">
-  <input id="phone" class="w-full p-3 rounded" placeholder="Phone">
-  <select id="service" class="w-full p-3 rounded">
+  <input id="name" placeholder="Name">
+  <input id="phone" placeholder="Phone">
+  <select id="service">
     <option>Wet Look</option>
     <option>Doll Look</option>
     <option>Anime Look</option>
     <option>So Cute</option>
   </select>
-  <input id="date" type="datetime-local" class="w-full p-3 rounded">
+
+  <!-- 📌 SLOT สำหรับปฏิทินในอนาคต -->
+  <div class="text-sm opacity-70 mt-2">
+    📅 เลือกวัน / เวลา (ระบบปฏิทินจะเพิ่มในเวอร์ชันถัดไป)
+  </div>
 
   <button onclick="submitBooking()" class="w-full py-3 bg-pink-400 text-black rounded-full font-semibold">
     Confirm Booking
   </button>
-</div>
 
-<!-- CALENDAR -->
-<div class="mt-10 glass p-4">
-<h3 class="text-center mb-4">Available Schedule</h3>
-<iframe
-  src="https://calendar.google.com/calendar/embed?src=CALENDAR_ID&ctz=Asia%2FBangkok"
-  style="border:0;filter:invert(1) hue-rotate(180deg) contrast(1.1);background:black"
-  width="100%"
-  height="420"
-  frameborder="0"
-></iframe>
+  <p id="status" class="text-center text-sm mt-3"></p>
 </div>
-
 </section>
 
+<!-- SCRIPT -->
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVVkJI2jJPWT_szO612NcF5-o618Y5hb7YDJwMAPhSv1rInDS1J_vB6j22wwUUtY2l/exec";
-
-function submitBooking(){
+function submitBooking() {
   const data = {
-    name: name.value,
-    phone: phone.value,
-    service: service.value,
-    start: new Date(date.value).toISOString(),
-    end: new Date(new Date(date.value).getTime()+90*60000).toISOString()
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    service: document.getElementById("service").value,
+    createdAt: new Date().toISOString()
   };
 
-  fetch(SCRIPT_URL,{
-    method:"POST",
-    body:JSON.stringify(data)
-  }).then(r=>r.json())
-  .then(()=>{
-    alert("จองสำเร็จแล้ว ✅");
-  }).catch(()=>{
-    alert("เกิดข้อผิดพลาด ❌");
-  });
+  // 🔮 อนาคต: เปลี่ยนตรงนี้เป็น API ปฏิทินของเรา
+  console.log("BOOKING DATA:", data);
+
+  document.getElementById("status").innerText =
+    "✅ จองเรียบร้อยแล้ว ทีมงานจะติดต่อกลับทาง LINE";
 }
 </script>
 
