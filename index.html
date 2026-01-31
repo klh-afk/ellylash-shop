@@ -1,121 +1,169 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ELLYLASH – Premium Lash Studio</title>
+<title>ELLYLASH – Premium Eyelash Extensions</title>
 
 <style>
 body{
   margin:0;
-  font-family: 'Segoe UI',sans-serif;
-  background:#0f0b0e;
-  color:white;
+  font-family:-apple-system, BlinkMacSystemFont, sans-serif;
+  background:#0b0b0b;
+  color:#fff;
 }
+
+.container{
+  max-width:480px;
+  margin:auto;
+  padding:20px;
+}
+
+/* HERO */
 .hero{
-  height:100vh;
-  background:url("https://i.postimg.cc/KvjKnpsw/file_00000000b3fc71fa941f0ef67cea1951.png") center/cover no-repeat;
-  display:flex;
-  flex-direction:column;
-  justify-content:end;
-  padding:40px;
+  text-align:center;
+  padding:80px 20px 60px;
+  background:
+    radial-gradient(circle at top,#ffb6d5,#0b0b0b 70%);
+}
+.hero img{
+  width:100%;
+  border-radius:24px;
+  box-shadow:0 30px 80px rgba(255,182,213,.3);
 }
 .hero h1{
-  font-size:42px;
+  margin:20px 0 8px;
+  font-size:36px;
   letter-spacing:2px;
 }
-.hero p{opacity:.9}
-
+.hero p{
+  opacity:.8;
+}
 .btn{
-  margin-top:20px;
   display:inline-block;
-  background:#ff7eb6;
-  color:white;
-  padding:14px 32px;
+  margin-top:20px;
+  padding:14px 36px;
   border-radius:999px;
+  background:linear-gradient(135deg,#ff7eb6,#ffb3d9);
+  color:#000;
   text-decoration:none;
   font-weight:700;
-  box-shadow:0 10px 30px rgba(255,126,182,.4);
+  box-shadow:0 10px 30px rgba(255,126,182,.5);
 }
-.section{padding:80px 20px; max-width:480px; margin:auto;}
-.gallery{display:flex; gap:16px; overflow-x:auto;}
-.gallery img{
-  width:240px;
-  border-radius:20px;
+
+/* SERVICES */
+.section-title{
+  text-align:center;
+  margin:50px 0 20px;
+  font-size:24px;
+  letter-spacing:1px;
 }
-.price{
-  background:#1c131a;
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.card{
+  background:#141414;
   padding:20px;
-  border-radius:16px;
-  margin-bottom:12px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 8px 30px rgba(255,126,182,.15);
 }
-.footer{
+.card b{
+  display:block;
+  margin-top:6px;
+  color:#ff7eb6;
+}
+
+/* BOOKING */
+.booking{
+  margin-top:60px;
+  background:#141414;
+  padding:30px;
+  border-radius:24px;
+}
+input,select{
+  width:100%;
+  padding:14px;
+  margin-bottom:12px;
+  border-radius:12px;
+  border:none;
+}
+.submit{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ff7eb6,#ffb3d9);
+  font-weight:700;
+}
+
+/* PROMO */
+.promo{
+  margin-top:40px;
+  padding:30px;
+  border-radius:24px;
+  text-align:center;
+  background:linear-gradient(135deg,#ff7eb6,#ffb3d9);
+  color:#000;
+  font-weight:700;
+}
+
+/* FOOTER */
+footer{
   text-align:center;
   opacity:.7;
-  padding:40px 20px;
-}
-.fab{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#ff7eb6;
-  padding:16px 30px;
-  border-radius:999px;
-  color:white;
-  text-decoration:none;
-  font-weight:700;
-  z-index:999;
+  margin:60px 0 40px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
+  <img src="HERO_IMAGE_URL_HERE.jpg" alt="ELLYLASH">
   <h1>ELLYLASH</h1>
-  <p>Premium Pink Lash Studio</p>
-  <a href="https://line.me/R/ti/p/@220blqmu" class="btn" target="_blank">จองคิวทาง LINE 💗</a>
+  <p>Premium Eyelash Extensions</p>
+  <a href="#booking" class="btn">BOOK NOW</a>
 </div>
 
-<!-- GALLERY -->
-<div class="section">
-<h2>ผลงานจริง</h2>
-<div class="gallery">
-  <img src="https://i.postimg.cc/B65w1FZ1/1769739279789.jpg">
-  <img src="https://i.postimg.cc/5NyHwKRN/1769763534518.jpg">
-  <img src="https://i.postimg.cc/Kz5K56b3/1769763534401.jpg">
-</div>
-</div>
+<div class="container">
 
-<!-- PRICE -->
-<div class="section">
-<h2>ลายตายอดนิยม</h2>
-<div class="price">Wet Look – 599฿</div>
-<div class="price">Doll Look – 599฿</div>
-<div class="price">Anime Look – 699฿</div>
-<div class="price">Lifting – 499฿</div>
-</div>
+  <div class="section-title">SERVICES</div>
+  <div class="grid">
+    <div class="card">Wet Look <b>599฿</b></div>
+    <div class="card">Doll Look <b>599฿</b></div>
+    <div class="card">Anime Look <b>699฿</b></div>
+    <div class="card">So Cute <b>599฿</b></div>
+  </div>
 
-<!-- PROMO -->
-<div class="section">
-<h2>🎀 โปรโมชั่น</h2>
-<p>จองวันนี้ มัดจำ ลดทันที 10%</p>
-<a href="https://line.me/R/ti/p/@220blqmu" class="btn" target="_blank">รับสิทธิ์ทันที</a>
-</div>
+  <div id="booking" class="booking">
+    <h2>BOOKING</h2>
+    <input placeholder="Name">
+    <input placeholder="Phone">
+    <select>
+      <option>Lash Style</option>
+      <option>Wet Look</option>
+      <option>Doll Look</option>
+      <option>Anime Look</option>
+      <option>So Cute</option>
+    </select>
+    <input type="date">
+    <input type="time">
+    <button class="submit">Book Appointment</button>
+  </div>
 
-<!-- FOOTER -->
-<div class="footer">
-📍 ELLYLASH Studio<br>
-📞 061-xxx-xxxx<br>
-LINE: @ellylash
-</div>
+  <div class="promo">
+    Deposit Today – Get 10% OFF
+  </div>
 
-<!-- FLOATING BUTTON -->
-<a class="fab" href="https://line.me/R/ti/p/@220blqmu" target="_blank">
-💬 จองคิวทาง LINE
-</a>
+  <footer>
+    LINE: @220blqmu<br>
+    Book your beauty moment ✨
+  </footer>
+
+</div>
 
 </body>
 </html>
