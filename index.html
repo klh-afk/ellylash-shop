@@ -5,61 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ELLYLASH – Premium Eyelash Extensions</title>
 
-<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Font -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  background:#0b0b0c;
-  color:white;
-  font-family:Montserrat;
-}
-
-/* HERO */
-.hero {
+body{background:#0b0b0c;color:white;font-family:Montserrat;margin:0}
+.hero{
   background:url("https://i.postimg.cc/gkvyyN4p/Luxury-eyelash-extensions-advertising-poster-extreme-close-up-of-a-woman-e-20260131-072825-0000.jpg")
   center/cover no-repeat;
   height:60vh;
   mask-image:linear-gradient(to bottom, black 65%, transparent 100%);
 }
-
-/* CARDS */
-.card {
+.card{
   background:rgba(255,255,255,0.08);
   border-radius:18px;
   padding:18px;
   box-shadow:0 0 25px rgba(255,105,180,.35);
   transition:.3s;
 }
-.card:hover {
+.card:hover{
   transform:translateY(-6px);
   box-shadow:0 0 45px rgba(255,105,180,.65);
 }
-
-/* GALLERY */
-.gallery img {
+.gallery img{
   width:150px;
   aspect-ratio:1/1;
   object-fit:cover;
   border-radius:14px;
 }
-
-/* GLASS */
-.glass {
+.glass{
   background:rgba(255,255,255,0.06);
   backdrop-filter:blur(12px);
   border-radius:20px;
 }
-
-/* INPUT */
-input, select {
+input,select{
   background:rgba(0,0,0,.4);
   border-radius:12px;
   padding:12px;
   width:100%;
+  color:white;
 }
 </style>
 </head>
@@ -104,8 +88,8 @@ input, select {
 <h2 class="text-2xl mb-4 tracking-widest">BOOKING</h2>
 
 <div class="glass p-4 space-y-3">
-  <input id="name" placeholder="Name">
-  <input id="phone" placeholder="Phone">
+  <input id="name" placeholder="ชื่อผู้จอง">
+  <input id="phone" placeholder="เบอร์โทร">
   <select id="service">
     <option>Wet Look</option>
     <option>Doll Look</option>
@@ -113,34 +97,40 @@ input, select {
     <option>So Cute</option>
   </select>
 
-  <!-- 📌 SLOT สำหรับปฏิทินในอนาคต -->
   <div class="text-sm opacity-70 mt-2">
-    📅 เลือกวัน / เวลา (ระบบปฏิทินจะเพิ่มในเวอร์ชันถัดไป)
+    📅 เลือกวัน / เวลา (ร้านจะยืนยันคิวผ่าน LINE)
   </div>
 
-  <button onclick="submitBooking()" class="w-full py-3 bg-pink-400 text-black rounded-full font-semibold">
-    Confirm Booking
-  </button>
-
-  <p id="status" class="text-center text-sm mt-3"></p>
+  <a onclick="submitBooking()"
+     class="block w-full text-center py-3 bg-pink-400 text-black rounded-full font-semibold cursor-pointer">
+     ยืนยันการจองผ่าน LINE
+  </a>
 </div>
 </section>
 
-<!-- SCRIPT -->
 <script>
-function submitBooking() {
-  const data = {
-    name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
-    service: document.getElementById("service").value,
-    createdAt: new Date().toISOString()
-  };
+function submitBooking(){
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const service = document.getElementById("service").value;
 
-  // 🔮 อนาคต: เปลี่ยนตรงนี้เป็น API ปฏิทินของเรา
-  console.log("BOOKING DATA:", data);
+  if(!name || !phone){
+    alert("กรุณากรอกชื่อและเบอร์โทร");
+    return;
+  }
 
-  document.getElementById("status").innerText =
-    "✅ จองเรียบร้อยแล้ว ทีมงานจะติดต่อกลับทาง LINE";
+  const msg = `
+จองคิวต่อขนตา 💗
+ชื่อ: ${name}
+เบอร์: ${phone}
+บริการ: ${service}
+`;
+
+  const lineURL =
+    "https://line.me/R/ti/p/@220blqmu?text=" +
+    encodeURIComponent(msg);
+
+  window.open(lineURL, "_blank");
 }
 </script>
 
