@@ -3,30 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ELLYLASH – Premium Eyelash Extensions</title>
+<title>ELLYLASH – Booking System</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;background:#0b0b0c;color:white;font-family:Montserrat}
+body{background:#0b0b0c;color:white;font-family:Montserrat;margin:0}
 .hero{
-  height:60vh;
+  height:55vh;
   background:url("https://i.postimg.cc/gkvyyN4p/Luxury-eyelash-extensions-advertising-poster-extreme-close-up-of-a-woman-e-20260131-072825-0000.jpg")
   center/cover no-repeat;
   mask-image:linear-gradient(to bottom,black 60%,transparent)
 }
-.card{
-  background:rgba(255,255,255,.08);
-  border-radius:18px;
-  padding:18px;
-  box-shadow:0 0 25px rgba(255,105,180,.35);
-  transition:.3s
-}
+.glass{background:rgba(255,255,255,.06);backdrop-filter:blur(14px);border-radius:20px}
+.card{background:rgba(255,255,255,.08);border-radius:18px;padding:18px;box-shadow:0 0 25px rgba(255,105,180,.35);transition:.3s}
 .card:hover{transform:translateY(-6px);box-shadow:0 0 45px rgba(255,105,180,.65)}
-.gallery img{width:150px;aspect-ratio:1/1;object-fit:cover;border-radius:14px}
-.glass{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);border-radius:20px}
-input,select{outline:none}
+.gallery img{width:140px;aspect-ratio:1/1;object-fit:cover;border-radius:14px}
 </style>
 </head>
 
@@ -34,12 +27,10 @@ input,select{outline:none}
 
 <!-- HERO -->
 <section class="hero flex items-center justify-center text-center">
-  <div class="mt-32">
+  <div class="mt-28">
     <h1 class="text-4xl tracking-widest font-semibold">ELLYLASH</h1>
     <p class="text-sm opacity-80 mt-2">Premium Eyelash Extensions</p>
-    <a href="#booking" class="inline-block mt-6 px-8 py-3 bg-pink-400 text-black rounded-full font-semibold">
-      BOOK NOW
-    </a>
+    <a href="#booking" class="inline-block mt-6 px-8 py-3 bg-pink-400 text-black rounded-full font-semibold">BOOK NOW</a>
   </div>
 </section>
 
@@ -73,10 +64,8 @@ input,select{outline:none}
   <input id="name" class="w-full p-3 rounded bg-black/40" placeholder="Name">
   <input id="phone" class="w-full p-3 rounded bg-black/40" placeholder="Phone">
   <select id="service" class="w-full p-3 rounded bg-black/40">
-    <option>Wet Look</option>
-    <option>Doll Look</option>
-    <option>Anime Look</option>
-    <option>So Cute</option>
+    <option>Wet Look</option><option>Doll Look</option>
+    <option>Anime Look</option><option>So Cute</option>
   </select>
   <input id="date" type="date" class="w-full p-3 rounded bg-black/40">
   <select id="time" class="w-full p-3 rounded bg-black/40">
@@ -93,8 +82,8 @@ input,select{outline:none}
 
 <!-- CALENDAR -->
 <div class="mt-10 glass p-4">
-<h3 class="text-center mb-3">ตารางคิวร้าน</h3>
-<iframe 
+<h3 class="text-center mb-3">ตารางคิวร้าน (อัปเดตจริง)</h3>
+<iframe
   src="https://calendar.google.com/calendar/embed?src=primary&ctz=Asia%2FBangkok"
   width="100%" height="420" frameborder="0" scrolling="no"
   class="rounded-xl bg-black">
@@ -103,33 +92,34 @@ input,select{outline:none}
 </section>
 
 <script>
-const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzj7Jo45BrfbqV67W3cKE9k4jpqg0q--6PcqpOnjSk/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzj7Jo45BrfbqV67W3cKE9k4jpqg0q--6PcqpOnjSk/exec";
 
-document.getElementById("submit").addEventListener("click", async ()=>{
-  const name=document.getElementById("name").value.trim();
-  const phone=document.getElementById("phone").value.trim();
-  const service=document.getElementById("service").value;
-  const date=document.getElementById("date").value;
-  const time=document.getElementById("time").value;
+document.getElementById("submit").onclick = async ()=>{
+  const data = {
+    name: name.value.trim(),
+    phone: phone.value.trim(),
+    service: service.value,
+    date: date.value,
+    time: time.value
+  };
 
-  if(!name||!phone||!date||!time){
+  if(!data.name || !data.phone || !data.date || !data.time){
     alert("กรุณากรอกข้อมูลให้ครบ");
     return;
   }
 
-  await fetch(SCRIPT_URL,{
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body:JSON.stringify({
-      name,phone,service,
-      start:date+" "+time,
-      end:date+" "+time
-    })
-  });
-
-  alert("จองสำเร็จแล้ว 💗");
-  document.querySelectorAll("input").forEach(i=>i.value="");
-});
+  try{
+    await fetch(SCRIPT_URL,{
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body:JSON.stringify(data)
+    });
+    alert("จองคิวสำเร็จแล้ว 💗");
+    location.reload();
+  }catch(e){
+    alert("ระบบขัดข้อง กรุณาลองใหม่");
+  }
+};
 </script>
 
 </body>
