@@ -1,98 +1,121 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ELLYLASH – Premium Eyelash Extensions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELLYLASH – Premium Eyelash Extensions</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <style>
-    body { background:#0d0a0b; color:white; font-family:Montserrat }
-    .font-serif { font-family:"Cormorant Garamond",serif }
-    .glass { background:#141114; box-shadow:0 0 40px rgba(255,120,180,.08); }
-    .fade-top { mask-image:linear-gradient(to bottom, black 40%, transparent 100%); }
-  </style>
+<style>
+body{background:#0d0a0b;color:white;font-family:Montserrat}
+.font-serif{font-family:'Cormorant Garamond',serif}
+.glass{background:#141114;box-shadow:0 0 40px rgba(255,120,180,.08)}
+.price-btn{
+background:linear-gradient(135deg,#ff8acb,#ff5fa2);
+box-shadow:0 10px 30px rgba(255,120,180,.6);
+}
+.calendar-day{
+border:1px solid #333;padding:10px;border-radius:10px;text-align:center;
+}
+.available{background:#1f1b1e;color:#fff}
+.unavailable{opacity:.3}
+</style>
 </head>
 
-<body class="overflow-x-hidden">
+<body>
 
 <!-- HERO -->
-<section class="relative min-h-screen flex flex-col items-center justify-center text-center px-6">
-  <img src="https://i.postimg.cc/gkvyyN4p/Luxury-eyelash-extensions-advertising-poster-extreme-close-up-of-a-woman-e-20260131-072825-0000.jpg"
-       class="absolute top-0 w-full h-[55%] object-cover fade-top opacity-70"/>
+<section class="relative min-h-screen flex items-center justify-center text-center px-6">
+<img src="https://i.postimg.cc/gkvyyN4p/Luxury-eyelash-extensions-advertising-poster-extreme-close-up-of-a-woman-e-20260131-072825-0000.jpg"
+class="absolute top-0 w-full h-[55%] object-cover opacity-70"
+style="mask-image:linear-gradient(to bottom, black 40%, transparent 100%)"/>
 
-  <div class="relative z-10 mt-40">
-    <h1 class="text-5xl font-serif tracking-widest">ELLYLASH</h1>
-    <p class="mt-4 text-pink-300 tracking-wider">Premium Eyelash Extensions</p>
-
-    <a href="#booking" class="inline-block mt-10 px-10 py-4 bg-pink-400 text-black rounded-full text-sm tracking-widest hover:scale-105 transition">
-      BOOK NOW
-    </a>
-  </div>
+<div class="relative z-10 mt-40">
+<h1 class="text-5xl font-serif tracking-widest">ELLYLASH</h1>
+<p class="mt-4 text-pink-300 tracking-wider">Premium Eyelash Extensions</p>
+<a href="#booking" class="inline-block mt-10 px-10 py-4 bg-pink-400 text-black rounded-full">BOOK NOW</a>
+</div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="py-24 px-6">
-  <h2 class="text-center text-3xl font-serif tracking-wider mb-12">SERVICES</h2>
+<section class="py-24 px-6">
+<h2 class="text-center text-3xl font-serif mb-12">SERVICES</h2>
 
-  <div class="grid grid-cols-2 gap-6 max-w-md mx-auto">
-    <div class="glass p-6 rounded-2xl text-center">
-      <p>Wet Look</p>
-      <p class="text-pink-400 mt-2">599฿</p>
-    </div>
-    <div class="glass p-6 rounded-2xl text-center">
-      <p>Doll Look</p>
-      <p class="text-pink-400 mt-2">599฿</p>
-    </div>
-    <div class="glass p-6 rounded-2xl text-center">
-      <p>Anime Look</p>
-      <p class="text-pink-400 mt-2">699฿</p>
-    </div>
-    <div class="glass p-6 rounded-2xl text-center">
-      <p>So Cute</p>
-      <p class="text-pink-400 mt-2">599฿</p>
-    </div>
-  </div>
+<div class="grid grid-cols-2 gap-6 max-w-md mx-auto">
+<div class="glass p-6 rounded-2xl text-center">
+<p>Wet Look</p>
+<div class="price-btn mt-4 py-2 rounded-full text-black">599฿</div>
+</div>
+
+<div class="glass p-6 rounded-2xl text-center">
+<p>Doll Look</p>
+<div class="price-btn mt-4 py-2 rounded-full text-black">599฿</div>
+</div>
+
+<div class="glass p-6 rounded-2xl text-center">
+<p>Anime Look</p>
+<div class="price-btn mt-4 py-2 rounded-full text-black">699฿</div>
+</div>
+
+<div class="glass p-6 rounded-2xl text-center">
+<p>So Cute</p>
+<div class="price-btn mt-4 py-2 rounded-full text-black">599฿</div>
+</div>
+</div>
 </section>
 
 <!-- GALLERY -->
-<section id="gallery" class="py-16">
-  <h2 class="text-center text-3xl font-serif tracking-wider mb-10">GALLERY</h2>
-
-  <div class="flex gap-4 overflow-x-auto px-6">
-    <img src="https://i.postimg.cc/KvjKnpsw/file_00000000b3fc71fa941f0ef67cea1951.png" class="w-56 rounded-2xl">
-    <img src="https://i.postimg.cc/B65w1FZ1/1769739279789.jpg" class="w-56 rounded-2xl">
-    <img src="https://i.postimg.cc/5NyHwKRN/1769763534518.jpg" class="w-56 rounded-2xl">
-    <img src="https://i.postimg.cc/Kz5K56b3/1769763534401.jpg" class="w-56 rounded-2xl">
-  </div>
+<section class="py-16">
+<h2 class="text-center text-3xl font-serif mb-10">GALLERY</h2>
+<div class="flex gap-4 overflow-x-auto px-6">
+<img src="https://i.postimg.cc/KvjKnpsw/file_00000000b3fc71fa941f0ef67cea1951.png" class="w-40 h-40 object-cover rounded-xl">
+<img src="https://i.postimg.cc/B65w1FZ1/1769739279789.jpg" class="w-40 h-40 object-cover rounded-xl">
+<img src="https://i.postimg.cc/5NyHwKRN/1769763534518.jpg" class="w-40 h-40 object-cover rounded-xl">
+<img src="https://i.postimg.cc/Kz5K56b3/1769763534401.jpg" class="w-40 h-40 object-cover rounded-xl">
+</div>
 </section>
 
 <!-- BOOKING -->
 <section id="booking" class="py-24 px-6">
-  <h2 class="text-center text-3xl font-serif mb-10">BOOKING</h2>
+<h2 class="text-center text-3xl font-serif mb-10">BOOKING</h2>
 
-  <form class="max-w-md mx-auto space-y-4">
-    <input placeholder="Name" class="w-full p-4 rounded-xl text-black" />
-    <input placeholder="Phone" class="w-full p-4 rounded-xl text-black" />
-    <select class="w-full p-4 rounded-xl text-black">
-      <option>Wet Look</option>
-      <option>Doll Look</option>
-      <option>Anime Look</option>
-      <option>So Cute</option>
-    </select>
+<div class="max-w-md mx-auto space-y-6">
 
-    <a href="https://line.me/R/ti/p/@220blqmu"
-       class="block text-center bg-pink-400 text-black py-4 rounded-full mt-6 tracking-widest">
-      CONFIRM VIA LINE
-    </a>
-  </form>
+<input class="w-full p-4 rounded-xl text-black" placeholder="Name">
+<input class="w-full p-4 rounded-xl text-black" placeholder="Phone">
+
+<!-- Calendar -->
+<div class="grid grid-cols-7 gap-2 text-xs">
+<div class="calendar-day available">1</div>
+<div class="calendar-day available">2</div>
+<div class="calendar-day unavailable">3</div>
+<div class="calendar-day available">4</div>
+<div class="calendar-day unavailable">5</div>
+<div class="calendar-day available">6</div>
+<div class="calendar-day available">7</div>
+</div>
+
+<!-- Time slots -->
+<div class="grid grid-cols-3 gap-3">
+<button class="glass p-2 rounded-xl">10:00</button>
+<button class="glass p-2 rounded-xl">12:00</button>
+<button class="glass p-2 rounded-xl">14:00</button>
+<button class="glass p-2 rounded-xl">16:00</button>
+<button class="glass p-2 rounded-xl">18:00</button>
+<button class="glass p-2 rounded-xl opacity-30">20:00</button>
+</div>
+
+<a href="https://line.me/R/ti/p/@220blqmu"
+class="block text-center bg-pink-400 text-black py-4 rounded-full">
+CONFIRM VIA LINE
+</a>
+
+</div>
 </section>
 
-<!-- FOOTER -->
 <footer class="py-10 text-center text-xs text-gray-500">
-  © ELLYLASH – Premium Beauty Studio
+© ELLYLASH – Premium Beauty Studio
 </footer>
 
 </body>
