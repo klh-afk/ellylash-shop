@@ -1,58 +1,51 @@
 <!doctype html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<title>จองคิว</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>เว็บไซต์ลูกค้า</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-const firebaseConfig = {
-  apiKey: "API_KEY",
-  authDomain: "PROJECT_ID.firebaseapp.com",
-  projectId: "PROJECT_ID"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-window.submitBooking = async function () {
-  await addDoc(
-    collection(db, "shops", "demo-shop", "bookings"),
-    {
-      customerName: document.getElementById("name").value,
-      phone: document.getElementById("phone").value,
-      service: document.getElementById("service").value,
-      date: document.getElementById("date").value,
-      time: document.getElementById("time").value,
-      status: "pending",
-      createdAt: serverTimestamp()
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
-  );
-
-  // ส่งไปหน้าปฏิทิน
-  window.location.href = "https://klh-afk.github.io/boy-studio-pro-max-template-Public/calendar/";
-};
-</script>
-
-<style>
-body { font-family: sans-serif; padding: 20px; }
-input, button { width: 100%; padding: 12px; margin-bottom: 10px; }
-button { background: #4f46e5; color: white; border: none; border-radius: 8px; }
-</style>
+  </style>
 </head>
 
-<body>
-<h2>จองคิว</h2>
+<body class="bg-[#faf8f3] text-gray-800">
 
-<input id="name" placeholder="ชื่อลูกค้า">
-<input id="phone" placeholder="เบอร์โทร">
-<input id="service" placeholder="บริการ">
-<input id="date" type="date">
-<input id="time" type="time">
+  <!-- HERO -->
+  <section class="min-h-screen flex flex-col justify-center items-center px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">
+      เว็บไซต์ลูกค้า
+    </h1>
+    <p class="text-lg md:text-xl text-gray-600 mb-8">
+      ระบบจองออนไลน์ • ปฏิทินเรียลไทม์ • แจ้งเตือนอัตโนมัติ
+    </p>
 
-<button onclick="submitBooking()">ยืนยันการจอง</button>
+    <!-- CTA -->
+    <div class="flex flex-col sm:flex-row gap-4">
+      <!-- ปุ่มไปหน้าจอง -->
+      <a href="booking.html"
+         class="px-8 py-4 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
+        📅 จองคิว / สั่งบริการ
+      </a>
+
+      <!-- ปุ่มไปหลังบ้าน (ซ่อนไว้ได้) -->
+      <a href="calendar.html"
+         class="px-8 py-4 rounded-xl bg-gray-200 text-gray-800 font-semibold hover:bg-gray-300 transition">
+        🔐 ระบบจัดการ (หลังบ้าน)
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center text-sm text-gray-500 py-6">
+    © 2026 เว็บไซต์ลูกค้า | All rights reserved
+  </footer>
+
 </body>
 </html>
